@@ -1,0 +1,27 @@
+<!doctype html>
+<link rel='stylesheet' type="text/css" href="static/style4.css"> 
+<html>
+<head>
+	<title>
+		Venue Finder
+	</title>
+</head>
+<body>
+<h1>Venue Finder</h1>
+<br>
+<h2>Venues near {{currentLoc}}</h2>
+
+<br>
+<table>
+{% for venue in venues %}
+<tr>
+	<th>
+		<b>{{venue}}</b><br>
+	</th>
+	<th>
+		<button OnClick="location.href='{{url_for('venueInfo', location=currentLoc, venue=venue)}}'">More Info</button>
+	</th>
+</tr>
+{% endfor %}
+</body>
+</html>
