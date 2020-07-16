@@ -1,0 +1,28 @@
+<!doctype html>
+<link rel='stylesheet' type="text/css" href="static/style4.css"> 
+<html>
+<head>
+	<title>
+		Venue Finder
+	</title>
+</head>
+<body>
+<h1>Venue Finder</h1>
+<br>
+<h2>Venues near {{currentLoc}}</h2>
+
+<br>
+<table border="1" style="float:left">
+	{% for i in info %}
+	<tr>
+		<th>
+			<b>{{i}}</b><br>
+		</th>
+		<th>
+			{{info[i]}}<br>
+		</th>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
