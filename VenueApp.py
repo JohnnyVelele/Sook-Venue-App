@@ -7,8 +7,25 @@ app = Flask(__name__)
 def main():
     return render_template("SookWebApp.html")
 
+@app.route('/', methods=['POST'])
+def venues():
+    location = request.form["location"]
+    allVenues = getVenues(location)
+        
+    return render_template("venues.html", venues=allVenues, currentLoc=location)
+
+def getVenues(location):
+    data = getJson(location)
+    allVenues = []
+
+    for places in data['response']['groups'][0]['items']:
+        allVenues.append(places['venue']['name'])
+
+    return allVenues
+
 def getJson(location):
     url = 'https://api.foursquare.com/v2/venues/explore'
+    allVenues = []
 
     params = dict(
     client_id='N31022NXMKFOENRP1A0MCRVJPSF2TDGFPT4CAQMJRX00TNFT',
